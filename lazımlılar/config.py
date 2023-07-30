@@ -1,0 +1,11 @@
+from telethon import TelegramClient, events
+from telethon.sessions import StringSession
+
+API_ID = 28348304
+API_HASH = "99275a99d9d593fd50ecf6127f0ac312" 
+bot_token = "6687245954:AAHjw3ifmApIGOtbBJfzEOvxZ2oWqE52Yo4"
+string_session = "1ApWapzMBuzeJW4q4rqJZxiJaNmSdyfK5-69T8-X8-f-e66w6qA7Fzq8AgDglMgjGphJ7BaUbN21G9amruXShfVzrgrmrR1TAzmvGXX1SV8xnVz0zHin9majjF7IWsaVnCX8WguDaznrhQkdGJ8ldBjalcKKl1tCK5pWXKt9u74saLy-3FjEd5oPzUBPColAIkPNQMfm-bYGvP5VXrQ7qVmc77ycfEdfjAMsDNphIM4IL7xGEQm3nzGNVQ2I_IF7hH2HfONSVhtT6w0_6NC4c8NUI2_Cq8YUdazCr0KkzTeKArYqhrgTnkzkFpUyxrOOAMomW62fX5BNkQJ_NjR0-ugofWHuihUo="
+
+Luna = TelegramClient(StringSession(string_session), API_ID, API_HASH).start(bot_token=bot_token)
+
+print("Modul Yüklendi")

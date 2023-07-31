@@ -116,7 +116,7 @@ async def handle_ship(event):
         members = [user for user in participants if not user.bot]
         random_users = random.sample(members, 2)
         user1, user2 = random_users[0], random_users[1]
-        await event.respond(f"@{user1.username} ve @{user2.username} harika bir çift olabilirsiniz.")
+        await event.respond(f"@{user1.username} ve @{user2.username} harika bir çift olabilirsiniz💝🙎‍♂️🙎‍♀️")
     except Exception as e:
         print("Hata:", e)
 

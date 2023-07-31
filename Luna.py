@@ -236,7 +236,9 @@ async def start(event):
 
 @Luna.on(events.NewMessage(pattern=r'\d+'))
 async def guess(event):
+    global min_number, max_number, secret_number
     user_guess = int(event.text)
+    
 
     if user_guess == secret_number:
         await event.respond('Tebrikler, doğru tahmin ettiniz!')

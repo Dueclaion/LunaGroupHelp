@@ -227,11 +227,13 @@ async def handle_stop(event):
 # Rastgele bir sayı seçin
 min_number = 1
 max_number = 500
-secret_number = random.randint(min_number, max_number)
+secret_number = None
 
 # Komutları işleyen fonksiyon
 @Luna.on(events.NewMessage(pattern='/sayi'))
 async def start(event):
+    global secret_number
+    secret_number = random.randint(min_number, max_number)
     await event.respond('1 ile 500 arasında bir sayı tahmin edin!')
 
 @Luna.on(events.NewMessage(pattern=r'\d+'))

@@ -318,7 +318,46 @@ async def song(event):
 
 
 
+isleyen = []
 
+
+@Luna.on(events.NewMessage(incoming=True, from_users=SAHIB, pattern="^[./!]gizlimod ?(.*)"))
+async def gizlimod(event):
+    global isleyen
+    emr = event.pattern_match.group(1)
+    qrup = event.chat_id
+    if emr.lower() in ["on", "off"]:
+        if emr.lower() == "on":
+            if qrup not in isleyen:
+                isleyen.append(qrup)
+                aktiv_olundu = "✅ **Gizli Mod bu qrupda aktiv olundu!**"
+                await event.reply(aktiv_olundu)
+            else:
+                await event.reply("⚠️ **Gizli Mod zaten aktivdir!**")
+        else:
+            if qrup in isleyen:
+                isleyen.remove(qrup)
+                await event.reply("⛔️ **Gizli Mod bu qrupda deaktiv olundu!**")
+            else:
+                await event.reply("⚠️ **Gizli Mod zaten deaktivdir!**")
+    else:
+        await event.reply("On və yaxud Off yazmadınız")
+
+
+@Luna.on(events.NewMessage(incoming=True))
+async def gizli(event):
+    global isleyen
+    mesaj = str(event.raw_text)
+    qrup = event.chat_id
+    yanitlanmis_mesaj = event.message.reply_to_msg_id
+    if qrup in isleyen:
+        if not yanitlanmis_mesaj:
+            yanitlanmis_mesaj = None
+            await Luna.send_message(event.chat_id, mesaj, reply_to=yanitlanmis_mesaj)
+            await event.delete()
+        else:
+            await Luna.send_message(event.chat_id, mesaj, reply_to=yanitlanmis_mesaj)
+            await event.delete()
 
 
 

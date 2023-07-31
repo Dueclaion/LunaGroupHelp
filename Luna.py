@@ -174,31 +174,6 @@ async def handler(event):
 async def handler(event):
   if event.user_joined:
     await event.reply(f"{random.choice(yeni_user)}")
-    
-@Luna.on(events.NewMessage(pattern="Ruslan"))
-async def yeni_mesaj(event: events.NewMessage.Event):
-  await event.reply(f"{random.choice(Ruslan)}")
-	    
-@Luna.on(events.NewMessage(pattern="Salam"))
-async def yeni_mesaj(event: events.NewMessage.Event):
-  await event.reply(f"{random.choice(salam)}")
-  
-  
-  @Luna.on(events.NewMessage(pattern="Necesen"))
-  async def yeni_mesaj(event: events.NewMessage.Event):
-    
-    await event.reply(f"{random.choice(necesen)}")
-  
-  @Luna.on(events.NewMessage(pattern="Geldim"))
-  async def yeni_mesaj(event: events.NewMessage.Event):
-    
-    await event.reply(f"{random.choice(geldim)}")
-  
-  @Luna.on(events.NewMessage(pattern="Ban"))
-  async def yeni_mesaj(event: events.NewMessage.Event):
-    
-    
-    await event.reply(f"{random.choice(ban)}")
 
 
 running = False

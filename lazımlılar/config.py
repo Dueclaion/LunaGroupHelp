@@ -8,4 +8,4 @@ string_session = "1ApWapzMBu4kSSgh-dBnaJEcjHvO2a_QtFjsvcv9fD4sJ1Stq_RzgMu44Q8ub9
 
 Luna = TelegramClient(StringSession(string_session), API_ID, API_HASH).start(bot_token=bot_token)
 
-print("Modul Yüklendi")
+print("Modul Yüklendi5")

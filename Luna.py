@@ -42,6 +42,7 @@ async def help(event):
 			 Button.inline('💾Temalar', data="Tema")],
 			[Button.inline('🎧Musiqi', data="music"),
 			Button.inline('🖊Matematik', data="math")],
+			[Button.inline('🔢 Sayı Tahmin', data="sayi")],	
 			[Button.inline('🚹Tağ', data="tag"),
 			Button.inline('🔙Geri', data="start")],
 			),
@@ -106,6 +107,13 @@ async def math(event):
 	[Button.inline('🔙Geri', data="help")],
 	),
 	link_preview=False)
+
+@Luna.on(events.callbackquery.CallbackQuery(data="sayi"))
+async def handler(event):
+  await event.edit("🤗Salam Sən Mənimlə Sayı Tahmin Edə Bilərsən🤩.Bot 1 dən 500 ə Qədər Bir Sayı Seçir🔢 Ve İstifadəçiler O Sayıyı Tapmağa Çalışır.🎮Oynamaq Üçün /sayi Komandasını Yerinə Yetirin." , buttons=(
+    [Button.inline('🔙Geri', data="help")]
+    ),
+    link_preview = False)
 	
 
 
@@ -206,6 +214,24 @@ async def handle_stop(event):
   global running
   await event.respond("Bot etiketleme işlemini durduruyor❌❌❌")
   running = False
+
+
+
+bot_number = random.randint(1, 500)
+
+@Luna.on(events.NewMessage(pattern=r'^/sayi'))
+async def sayi(event):
+    await event.respond(f"🤗Merhaba! 1 ile 500 arasında bir sayı seçtim🔢. Bu sayıyı tahmin edebilir misiniz❓?")
+
+@Luna.on(events.NewMessage(pattern=r'^\d+'))
+async def guess(event):
+    user_guess = int(event.raw_text)
+    if user_guess < bot_number:
+        await event.respond("🔝Daha büyük bir sayı deneyin.")
+    elif user_guess > bot_number:
+        await event.respond("⬇️Daha küçük bir sayı deneyin.")
+    else:
+        await event.respond("✅Tebrikler! Doğru sayıyı tahmin ettiniz.🤩")
 
 									
 													

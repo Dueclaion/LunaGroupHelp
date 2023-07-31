@@ -273,7 +273,7 @@ async def guess(event):
 
 # 'bot' değişkenini tanımlamak ve başlatmak için gerekli kodları ekleyin
 
-@Luna.on(events.NewMessage(pattern="^/song ?(.*)"))
+@Luna.on(events.NewMessage(from_users=SAHIB, pattern="^/song ?(.*)"))
 async def song(event):
     query = event.pattern_match.group(1)
     search = await event.reply("🔍Musiqi axtarılır...")

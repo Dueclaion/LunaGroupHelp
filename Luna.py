@@ -126,7 +126,7 @@ async def handle_ship(event):
         members = [user for user in participants if not user.bot]
         random_users = random.sample(members, 2)
         user1, user2 = random_users[0], random_users[1]
-        await event.respond(f"@{user1.username} ve @{user2.username} harika bir çift olabilirsiniz.")
+        await event.respond(f"@{user1.username} ve @{user2.username} Harika bir çift olabilirsiniz💝🙎‍♂️🙎‍♀️.")
     except Exception as e:
         print("Hata:", e)
 
@@ -220,32 +220,35 @@ async def handle_stop(event):
 
 
 
-guessing, lower_limit, upper_limit = False, 1, 500
+# Telegram botunuzun kimlik bilgilerini giri
 
-@Luna.on(events.NewMessage(pattern=r'^/sayi'))
-async def sayi(event):
-    global guessing, lower_limit, upper_limit
-    if not guessing:
-        guessing = True
-        bot_number = random.randint(lower_limit, upper_limit)
-        await event.respond(f"Merhaba! {lower_limit} ile {upper_limit} arasında bir sayı seçtim. Bu sayıyı tahmin edebilir misiniz?")
-    else:
-        await event.respond("Lütfen önceki tahmin sonuçlandıktan sonra yeni bir tahmin yapın.")
+# Telegram istemcisini olu
 
-@sayi.on(events.NewMessage(pattern=r'^\d+'))
+# Rastgele bir sayı seçin
+min_number = 1
+max_number = 500
+secret_number = random.randint(min_number, max_number)
+
+# Komutları işleyen fonksiyon
+@Luna.on(events.NewMessage(pattern='/sayi'))
+async def start(event):
+    await event.respond('1 ile 500 arasında bir sayı tahmin edin!')
+
+@Luna.on(events.NewMessage(pattern=r'\d+'))
 async def guess(event):
-    global guessing, lower_limit, upper_limit
-    if guessing:
-        user_guess = int(event.raw_text)
-        if user_guess < bot_number:
-            lower_limit = user_guess + 1
-            await event.respond(f"Daha büyük bir sayı deneyin. Aralık: {lower_limit} - {upper_limit}")
-        elif user_guess > bot_number:
-            upper_limit = user_guess - 1
-            await event.respond(f"Daha küçük bir sayı deneyin. Aralık: {lower_limit} - {upper_limit}")
-        else:
-            await event.respond("Tebrikler! Doğru sayıyı tahmin ettiniz.")
-        guessing, lower_limit, upper_limit = False, 1, 500
+    user_guess = int(event.text)
+
+    if user_guess == secret_number:
+        await event.respond('Tebrikler, doğru tahmin ettiniz!')
+        # Farklı bir aralıkta yeni bir sayı seçin
+        global min_number, max_number, secret_number
+        min_number = secret_number + 1
+        max_number += 100
+        secret_number = random.randint(min_number, max_number)
+    elif user_guess < secret_number:
+        await event.respond('Daha yüksek bir sayı deneyin.')
+    else:
+        await event.respond('Daha düşük bir sayı deneyin.')
 
 
 

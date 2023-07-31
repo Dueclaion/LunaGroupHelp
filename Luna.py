@@ -74,8 +74,8 @@ async def handler(event):
     link_preview = False)
     
     
-@Luna.on(events.callbackquery.CallbackQuery(data="music")):
-  async def handler(event):
+@Luna.on(events.callbackquery.CallbackQuery(data="music"))
+async def handler(event):
     await event.edit("🤗Salam, Musiqi Bölməmə Xoş Gəlmisiz.Siz Mənə Istediyin 🎧Musiqinin Sadəcə Adını Desen Mən Sizin Üçün O Musiqiyi Yükleyib Ata Bilerem\n\nTəka Elemen Gərək, ✅/song Əmrini Yazıb Musiqinin Adını Yazmaq\n\n🔁Nümune : /song Altüst Olmuşum")
 #Temalarr						
 last_message_time = time.time()

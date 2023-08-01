@@ -430,7 +430,7 @@ async def aciq(event):
                     ),
                     link_preview=False)
     await Luna.send_message(log_qrup, f"ℹ️ {etiraf_eden} __Açıq Etiraf Yazdı__")
-    await event.edit(f"{gonderildi}", buttons=(
+    await event.edit("Jdhdhehddheehee", buttons=(
                       [
                        Button.inline("💌 Yeni Etiraf", data="etiraf"),
                        Button.inline("🏠 Ana Səhifə", data="start")

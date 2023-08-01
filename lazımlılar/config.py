@@ -1,6 +1,6 @@
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
-
+import os
 API_ID = 28348304
 API_HASH = "99275a99d9d593fd50ecf6127f0ac312" 
 bot_token = "6079678077:AAGKQjLzvE5a5NiHs8wnA8OvXZ65Bz8FVnE"

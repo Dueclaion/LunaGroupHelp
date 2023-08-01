@@ -373,7 +373,7 @@ async def yeni_mesaj(event: events.NewMessage.Event):
   global mesaj
   if event.is_private:
     mesaj = str(event.raw_text)
-    if not mesaj == "/start":
+    if not mesaj == "/etiraf":
       await client.send_message(event.chat_id, f"{etirafmsg}", buttons=(
                       [
                       Button.inline("🔒 Anonim", data="anonim"),

@@ -325,9 +325,9 @@ mesaj = ["Mesaj Görünmədi"]
 @Luna.on(events.NewMessage(pattern="^/etiraf$"))
 async def etiraf(event):
   if event.is_private:
-    async for usr in client.iter_participants(event.chat_id):
+    async for usr in Luna.iter_participants(event.chat_id):
      ad = f"[{usr.first_name}](tg://user?id={usr.id}) "
-     await client.send_message(log_qrup, f"ℹ️ **Yeni istifadəçi -** {ad}")
+     await Luna.send_message(log_qrup, f"ℹ️ **Yeni istifadəçi -** {ad}")
      return await event.reply(f"{ad} {startmesaj}", buttons=(
                       [
                        Button.inline("💌 Etiraf Yaz", data="etiraf")
@@ -340,12 +340,12 @@ async def etiraf(event):
 
 
   if event.is_group:
-    return await client.send_message(event.chat_id, f"{qrupstart}")
+    return await Luna.send_message(event.chat_id, f"{qrupstart}")
 
 # Başlanğıc Button
 @Luna.on(events.callbackquery.CallbackQuery(data="etiraflar"))
 async def handler(event):
-    async for usr in client.iter_participants(event.chat_id):
+    async for usr in Luna.iter_participants(event.chat_id):
      ad = f"[{usr.first_name}](tg://user?id={usr.id}) "
      await event.edit(f"{ad} {startmesaj}", buttons=(
                       [
@@ -374,7 +374,7 @@ async def yeni_mesaj(event: events.NewMessage.Event):
   if event.is_private:
     mesaj = str(event.raw_text)
     if not mesaj == "/etiraf":
-      await client.send_message(event.chat_id, f"{etirafmsg}", buttons=(
+      await Luna.send_message(event.chat_id, f"{etirafmsg}", buttons=(
                       [
                       Button.inline("🔒 Anonim", data="anonim"),
                       Button.inline("🌟 Açıq", data="aciq")
@@ -390,10 +390,10 @@ etiraf_anonim = b"\xF0\x9F\x92\x8C\x20\x45\x74\x69\x72\x61\x66\x20\x42\x6F\x74\x
 async def anonim(event):
     global mesaj
     global tesdiq
-    async for usr in client.iter_participants(event.chat_id):
+    async for usr in Luna.iter_participants(event.chat_id):
      gonderen = f"[{usr.first_name}](tg://user?id={usr.id})"
      etiraf_eden = "Anonim"
-     yeni_etiraf = await client.send_message(admin_qrup, f"📣 **Yeni etiraf**\n\n🗣️ **Etiraf Edən -** {etiraf_eden} \n📜 **Etirafı -** {mesaj} \n\n📣 Etirafınızı {botad} -a edin")
+     yeni_etiraf = await Luna.send_message(admin_qrup, f"📣 **Yeni etiraf**\n\n🗣️ **Etiraf Edən -** {etiraf_eden} \n📜 **Etirafı -** {mesaj} \n\n📣 Etirafınızı {botad} -a edin")
      tesdiq = await yeni_etiraf.reply("Etiraf Təsdiqlənsin ?", buttons=(
                       [
                        Button.inline("✅ Təsdiqlə", data="tesdiq"
@@ -402,7 +402,7 @@ async def anonim(event):
                       ]
                     ),
                     link_preview=False)
-    await client.send_message(log_qrup, f"ℹ️ {gonderen} __Anonim Etiraf Yazdı__")
+    await Luna.send_message(log_qrup, f"ℹ️ {gonderen} __Anonim Etiraf Yazdı__")
     await event.edit(f"{gonderildi}", buttons=(
                       [
                        Button.inline("💌 Yeni Etiraf", data="etiraf"),
@@ -417,10 +417,10 @@ etiraf_aciq = b"\xE2\x84\xB9\xEF\xB8\x8F\x20\x42\x6F\x74\x20\x62\x61\xC5\x9F\x6C
 async def aciq(event):
     global mesaj
     global tesdiq
-    async for usr in client.iter_participants(event.chat_id):
+    async for usr in Luna.iter_participants(event.chat_id):
      etiraf_eden = f"[{usr.first_name}](tg://user?id={usr.id})"
      sonluq = f"\n💌 Etirafınızı {botad} -a edin"
-     yeni_etiraf = await client.send_message(admin_qrup, f"📣 **Yeni etiraf**\n\n🗣️ **Etiraf Edən -** {etiraf_eden} \n📜 **Etirafı -** {mesaj} \n{sonluq}")
+     yeni_etiraf = await Luna.send_message(admin_qrup, f"📣 **Yeni etiraf**\n\n🗣️ **Etiraf Edən -** {etiraf_eden} \n📜 **Etirafı -** {mesaj} \n{sonluq}")
      tesdiq = await yeni_etiraf.reply("Etiraf Təsdiqlənsin ?", buttons=(
                       [
                        Button.inline("✅ Təsdiqlə", data="tesdiq"
@@ -429,7 +429,7 @@ async def aciq(event):
                       ]
                     ),
                     link_preview=False)
-    await client.send_message(log_qrup, f"ℹ️ {etiraf_eden} __Açıq Etiraf Yazdı__")
+    await Luna.send_message(log_qrup, f"ℹ️ {etiraf_eden} __Açıq Etiraf Yazdı__")
     await event.edit(f"{gonderildi}", buttons=(
                       [
                        Button.inline("💌 Yeni Etiraf", data="etiraf"),
@@ -442,12 +442,12 @@ aciq = etiraf_aciq.decode("utf8")
 @Luna.on(events.callbackquery.CallbackQuery(data="tesdiq"))
 async def tesdiq(event):
     global tesdiq
-    async for usr in client.iter_participants(event.chat_id):
+    async for usr in Luna.iter_participants(event.chat_id):
       tesdiqliyen = f"[{usr.first_name}](tg://user?id={usr.id})"
     if tesdiq.reply_to_msg_id:
       etiraff = await tesdiq.get_reply_message()
       etiraf = etiraff.text
-      await client.send_message(etiraf_qrup, etiraf)
+      await Luna.send_message(etiraf_qrup, etiraf)
       await event.edit(f"✅ **Etiraf Təsdiqləndi**")
       
 @Luna.on(events.callbackquery.CallbackQuery(data="sil"))

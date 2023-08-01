@@ -419,7 +419,7 @@ async def aciq(event):
     global tesdiq
     async for usr in Luna.iter_participants(event.chat_id):
      etiraf_eden = f"[{usr.first_name}](tg://user?id={usr.id})"
-     sonluq = f"\n💌 Etirafınızı {botad} -a edin"
+     sonluq = f"\n💌 Etirafınızı @LunaMultibot -a edin"
      yeni_etiraf = await Luna.send_message(admin_qrup, f"📣 **Yeni etiraf**\n\n🗣️ **Etiraf Edən -** {etiraf_eden} \n📜 **Etirafı -** {mesaj} \n{sonluq}")
      tesdiq = await yeni_etiraf.reply("Etiraf Təsdiqlənsin ?", buttons=(
                       [
@@ -446,7 +446,7 @@ async def tesdiq(event):
       tesdiqliyen = f"[{usr.first_name}](tg://user?id={usr.id})"
     if tesdiq.reply_to_msg_id:
       etiraf = await tesdiq.get_reply_message()
-      etiraf = etiraff.text
+      etiraf = etiraf.text
       await Luna.send_message(etiraf_qrup, etiraf)
       await event.edit(f"✅ **Etiraf Təsdiqləndi**")
       

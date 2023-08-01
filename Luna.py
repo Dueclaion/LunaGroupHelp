@@ -403,7 +403,7 @@ async def anonim(event):
                     ),
                     link_preview=False)
     await Luna.send_message(log_qrup, f"ℹ️ {gonderen} __Anonim Etiraf Yazdı__")
-    await event.edit(f"{gonderildi}", buttons=(
+    await event.edit("Slaammsjeh", buttons=(
                       [
                        Button.inline("💌 Yeni Etiraf", data="etiraf"),
                        Button.inline("🏠 Ana Səhifə", data="start")

@@ -393,7 +393,7 @@ async def anonim(event):
     async for usr in Luna.iter_participants(event.chat_id):
      gonderen = f"[{usr.first_name}](tg://user?id={usr.id})"
      etiraf_eden = "Anonim"
-     yeni_etiraf = await Luna.send_message(admin_qrup, f"📣 **Yeni etiraf**\n\n🗣️ **Etiraf Edən -** {etiraf_eden} \n📜 **Etirafı -** {mesaj} \n\n📣 Etirafınızı {botad} -a edin")
+     yeni_etiraf = await Luna.send_message(admin_qrup, f"📣 **Yeni etiraf**\n\n🗣️ **Etiraf Edən -** {etiraf_eden} \n📜 **Etirafı -** {mesaj} \n\n📣 Etirafınızı @LunaMultibot -a edin")
      tesdiq = await yeni_etiraf.reply("Etiraf Təsdiqlənsin ?", buttons=(
                       [
                        Button.inline("✅ Təsdiqlə", data="tesdiq"

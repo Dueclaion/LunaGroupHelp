@@ -332,9 +332,9 @@ async def etiraf(event):
                       [
                        Button.inline("💌 Etiraf Yaz", data="etiraf")
                       ],
-                      [Button.url('📜 Etiraf Kanalı', f'https://t.me/{kanal}')],
-                      [Button.url('📣 Support', f'https://t.me/{support}'),
-                       Button.url('👨🏻‍💻 Sahibim', f'https://t.me/{sahib}')]
+                      [Button.url('📜 Etiraf Kanalı', 'https://t.me/LunaEtiraflar')],
+                      [Button.url('📣 Support', 'https://t.me/Dueclaion'),
+                       Button.url('👨🏻‍💻 Sahibim', 'https://t.me/Dueclaion')]
                     ),
                     link_preview=False)
 
@@ -351,9 +351,9 @@ async def handler(event):
                       [
                        Button.inline("💌 Etiraf Yaz", data="etiraf")
                       ],
-                      [Button.url('📜 Etiraf Kanalı', f'https://t.me/{kanal}')],
-                      [Button.url('📣 Support', f'https://t.me/{support}'),
-                       Button.url('👨🏻‍💻 Sahibim', f'https://t.me/{sahib}')]
+                      [Button.url('📜 Etiraf Kanalı', 'https://t.me/LunaEtiraflar')],
+                      [Button.url('📣 Support', 'https://t.me/Dueclaion'),
+                       Button.url('👨🏻‍💻 Sahibim', 'https://t.me/Dueclaion')]
                     ),
                     link_preview=False)
 
@@ -403,7 +403,7 @@ async def anonim(event):
                     ),
                     link_preview=False)
     await Luna.send_message(log_qrup, f"ℹ️ {gonderen} __Anonim Etiraf Yazdı__")
-    await event.edit("Slaammsjeh", buttons=(
+    await event.edit("Etirafınız göndərildi Adminlər tərəfindən təsdiq olunduqdan sonra @LunaEtiraflar kanalında paylaşılacaq", buttons=(
                       [
                        Button.inline("💌 Yeni Etiraf", data="etiraf"),
                        Button.inline("🏠 Ana Səhifə", data="start")
@@ -430,7 +430,7 @@ async def aciq(event):
                     ),
                     link_preview=False)
     await Luna.send_message(log_qrup, f"ℹ️ {etiraf_eden} __Açıq Etiraf Yazdı__")
-    await event.edit("Jdhdhehddheehee", buttons=(
+    await event.edit("Etirafınız göndərildi Adminlər tərəfindən təsdiq olunduqdan sonra @LunaEtiraflar kanalında paylaşılacaq", buttons=(
                       [
                        Button.inline("💌 Yeni Etiraf", data="etiraf"),
                        Button.inline("🏠 Ana Səhifə", data="start")

@@ -328,7 +328,7 @@ async def etiraf(event):
     async for usr in Luna.iter_participants(event.chat_id):
      ad = f"[{usr.first_name}](tg://user?id={usr.id}) "
      await Luna.send_message(log_qrup, f"ℹ️ **Yeni istifadəçi -** {ad}")
-     return await event.reply(f"{ad} {startmesaj}", buttons=(
+     return await event.reply(f"{ad} **Salam, Xoş Gəldin** __Heçkimə demədiyin etirafları mənə deyə bilərsən__ 🤭", buttons=(
                       [
                        Button.inline("💌 Etiraf Yaz", data="etiraf")
                       ],
@@ -347,7 +347,7 @@ async def etiraf(event):
 async def handler(event):
     async for usr in Luna.iter_participants(event.chat_id):
      ad = f"[{usr.first_name}](tg://user?id={usr.id}) "
-     await event.edit(f"{ad} {startmesaj}", buttons=(
+     await event.edit(f"{ad} **Salam, Xoş Gəldin** __Heçkimə demədiyin etirafları mənə deyə bilərsən__ 🤭", buttons=(
                       [
                        Button.inline("💌 Etiraf Yaz", data="etiraf")
                       ],
@@ -360,7 +360,7 @@ async def handler(event):
 # Etiraf Et
 @Luna.on(events.callbackquery.CallbackQuery(data="etiraf"))
 async def handler(event):
-    await event.edit(f"{etirafyaz}", buttons=(
+    await event.edit("**Buyur bir etiraf yaz Daha sonra mən onun açıq və ya anonim olacağını soruşacam** 😍", buttons=(
                       [
                       Button.inline("🏠 Ana Səhifə", data="start")
                       ]
@@ -374,7 +374,7 @@ async def yeni_mesaj(event: events.NewMessage.Event):
   if event.is_private:
     mesaj = str(event.raw_text)
     if not mesaj == "/etiraf":
-      await Luna.send_message(event.chat_id, f"{etirafmsg}", buttons=(
+      await Luna.send_message(event.chat_id, **Etirafını necə paylaşım ?** 🤔", buttons=(
                       [
                       Button.inline("🔒 Anonim", data="anonim"),
                       Button.inline("🌟 Açıq", data="aciq")

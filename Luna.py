@@ -1,5 +1,5 @@
 from telethon import *
-from lazımlılar.config import Luna
+from lazımlılar.config import Luna, admin_qrup, etiraf_qrup, kanal, log_group, botad, etirafmsg, startmsg, etirafyaz, qrupstart, gonderildi, support, sahib
 from telethon.sessions import StringSession
 import asyncio
 import random

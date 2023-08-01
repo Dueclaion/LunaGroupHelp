@@ -322,7 +322,7 @@ etiraf_eden = ["İstifadəçi Seçim Etməyib"]
 mesaj = ["Mesaj Görünmədi"]
 
 # Başlanğıc Mesajı
-@Luna.on(events.NewMessage(pattern="^/etiraf$"))
+@Luna.on(events.NewMessage(pattern="^/etiraf"))
 async def etiraf(event):
   if event.is_private:
     async for usr in Luna.iter_participants(event.chat_id):
@@ -445,7 +445,7 @@ async def tesdiq(event):
     async for usr in Luna.iter_participants(event.chat_id):
       tesdiqliyen = f"[{usr.first_name}](tg://user?id={usr.id})"
     if tesdiq.reply_to_msg_id:
-      etiraff = await tesdiq.get_reply_message()
+      etiraf = await tesdiq.get_reply_message()
       etiraf = etiraff.text
       await Luna.send_message(etiraf_qrup, etiraf)
       await event.edit(f"✅ **Etiraf Təsdiqləndi**")

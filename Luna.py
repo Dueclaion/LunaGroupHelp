@@ -373,7 +373,7 @@ async def yeni_mesaj(event: events.NewMessage.Event):
   global mesaj
   if event.is_private:
     mesaj = str(event.raw_text)
-    if not mesaj == "/Yuri":
+    if not mesaj == "/etiraf":
       await Luna.send_message(event.chat_id, "Etirafını necə paylaşım ?", buttons=(
                       [
                       Button.inline("🔒 Anonim", data="anonim"),
